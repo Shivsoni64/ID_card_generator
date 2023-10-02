@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .card {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+
+        #id-card {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <div class="card">
+        <h1>ID Card Generator</h1>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <br>
+            <label for="job-title">Job Title:</label>
+            <input type="text" id="job-title" placeholder="Enter your job title">
+            <br>
+            <label for="company">Company:</label>
+            <input type="text" id="company" placeholder="Enter your company">
+            <br>
+            <label for="photo">Photo URL:</label>
+            <input type="text" id="photo" placeholder="Enter photo URL">
+            <br>
+            <button type="button" onclick="generateCard()">Generate</button>
+        </form>
+        <div id="id-card"></div>
+    </div>
+    <script>
+        function generateCard() {
+            var name = document.getElementById("name").value;
+            var jobTitle = document.getElementById("job-title").value;
+            var company = document.getElementById("company").value;
+            var photoUrl = document.getElementById("photo").value;
+            var idCard = document.getElementById("id-card");
+            idCard.innerHTML = "";
+            var img = document.createElement("img");
+            img.src = photoUrl;
+            img.style.width = "100px";
+            img.style.height = "100px";
+            idCard.appendChild(img);
+            var namePara = document.createElement("p");
+            namePara.textContent = "Name: " + name;
+            idCard.appendChild(namePara);
+            var jobTitlePara = document.createElement("p");
+            jobTitlePara.textContent = "Job Title: " + jobTitle;
+            idCard.appendChild(jobTitlePara);
+            var companyPara = document.createElement("p");
+            companyPara.textContent = "Company: " + company;
+            idCard.appendChild(companyPara);
+            idCard.style.display = "block";
+        }
+
+    </script>
+</body>
+
+</html>
